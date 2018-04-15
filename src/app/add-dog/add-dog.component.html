@@ -1,0 +1,18 @@
+<div class="content-container">
+    <div class="form">
+        <h3>Current Dog: {{ dogName }}</h3>
+        <h3>Current Dog Owner: {{ ownerName }}</h3>
+        <mat-form-field>
+            <input matInput [(ngModel)]="dogName" placeholder="Dog Name">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="number" [(ngModel)]="dogWeight" placeholder="Dog Weight">
+            </mat-form-field>
+          <mat-form-field>
+            <input matInput [(ngModel)]="ownerName" placeholder="Owner Name">
+          </mat-form-field>
+    </div>
+
+    <img class="img-dog" src="{{ imageUrl }}" />
+    
+  </div>

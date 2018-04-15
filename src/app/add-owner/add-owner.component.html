@@ -1,0 +1,14 @@
+<h3>Add a new owner</h3>
+
+<mat-form-field>
+    <input matInput [(ngModel)]="ownerName" placeholder="Owner Name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="number" [(ngModel)]="ownerAge" placeholder="Owner Age">
+    </mat-form-field>
+  <mat-checkbox [(ngModel)]="hasLicense">Has Dangerous Dog License?</mat-checkbox>
+
+<input type="text" [(ngModel)]="ownerName" name="name" placeholder="Owner Name"/>
+<input type="number" [(ngModel)]="ownerAge" name="age" placeholder="Owner Age" />
+Has Dangerous Dog License?
+<input type="checkbox" [(ngModel)]="ownerName" name="owner" />
