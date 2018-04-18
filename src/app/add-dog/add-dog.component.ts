@@ -9,7 +9,7 @@ export class AddDogComponent implements OnInit {
 
   title: string = 'AngularDogs';
   dogName: string = 'Rex';
-  dogWeight: number = 35;
+  dogWeight: number;
   ownerName: string = 'John Doe';
   imageUrl: string;
 

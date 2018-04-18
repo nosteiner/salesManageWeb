@@ -4,6 +4,15 @@
 
     .form {
         grid-column: 1 / 1;
+
+        .message { 
+            font-size: 0.8em 
+        }
+
+        .warning {
+            color: red;
+        }
+
     }
 
     .img-dog {
