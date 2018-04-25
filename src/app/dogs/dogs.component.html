@@ -1,5 +1,9 @@
+<mat-form-field>
+  <input matInput [(ngModel)]="filterTerm" (ngModelChange)="onFilterChanged()" placeholder="Filter dogs by name..." />
+</mat-form-field>
+<div class="filter-header" *ngIf="filterTerm?.length > 0">Filtering dogs by name: {{ filterTerm }}</div>
 <div class="cards-container" layout-wrap layout="row">
-    <mat-card flex="30" *ngFor="let dog of dogs; let idx = index" class="dog-card">
+    <mat-card flex="30" *ngFor="let dog of dogs | filter:filterTerm; let idx = index" class="dog-card">
         <mat-card-header>
           <mat-card-title><h3>{{ idx + 1 }} - {{ dog.name }}</h3></mat-card-title>
         </mat-card-header>
@@ -8,7 +12,8 @@
           <p><strong>Birthdate:</strong> {{dog.birthDate | date: dateFormat}}</p>
           <p><strong>Owner:</strong> {{ dog.owner }}</p>
           <div class="button-row">
-              <button mat-button color="primary" (click)="removeDog(idx)">Remove</button>
+              <button mat-button color="primary" [routerLink]="['edit-dog', dog.id]">Edit</button>
+              <button mat-button color="danger" (click)="removeDog(idx)">Remove</button>
               <button mat-button (click)="toggleDate()">
                 <span *ngIf="dateFormat == 'shortDate'">+</span>
                 <span *ngIf="dateFormat == 'fullDate'">-</span>

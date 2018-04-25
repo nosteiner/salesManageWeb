@@ -8,12 +8,16 @@ import {MatButtonModule} from '@angular/material/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AddDogComponent } from './add-dog/add-dog.component';
 import { AddOwnerComponent } from './add-owner/add-owner.component';
 import { DogsComponent } from './dogs/dogs.component';
-import { DogsService } from './dogs.service'
+import { DogsService } from './dogs.service';
+import { AppRoutingModule } from './/app-routing.module';
+import { EditDogComponent } from './edit-dog/edit-dog.component';
+import { FilterPipe } from './filter.pipe'
 
 
 @NgModule({
@@ -21,7 +25,9 @@ import { DogsService } from './dogs.service'
     AppComponent,
     AddDogComponent,
     AddOwnerComponent,
-    DogsComponent
+    DogsComponent,
+    EditDogComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,8 @@ import { DogsService } from './dogs.service'
     MatCardModule,
     FormsModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [DogsService],
   bootstrap: [AppComponent]
