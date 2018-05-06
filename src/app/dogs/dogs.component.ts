@@ -27,8 +27,8 @@ export class DogsComponent implements OnInit {
     });
   }
 
-  onFilterChanged() {
-    this.router.navigate(['.'], { queryParams: { name: this.filterTerm }});
+  onFilterChanged(filterString) {
+    this.router.navigate(['.'], { queryParams: { name: filterString }});
   }
 
   removeDog(index) {
@@ -42,5 +42,10 @@ export class DogsComponent implements OnInit {
   selectDog(dog) {
     this.selectedDog = dog;
   }
+
+  handleAddWalk(walk) {
+    this.dogsService.addWalk(this.selectedDog, walk);
+  }
+
 
 }

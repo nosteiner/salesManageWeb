@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Dog } from '../dog';
 import Walk from '../walk';
 
@@ -10,15 +10,17 @@ import Walk from '../walk';
 export class AddWalkComponent implements OnInit {
 
   @Input() dog : Dog = new Dog();
+  @Output() walkAdded : EventEmitter<Walk> = new EventEmitter();
+  description: string;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  addWalk() {
-    let walk = new Walk();
-    
+  submit() {
+    let newWalk = new Walk(new Date(), this.description);
+    this.walkAdded.emit(newWalk);
   }
 
 }
