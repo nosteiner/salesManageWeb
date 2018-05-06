@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./dogs.component.scss']
 })
 export class DogsComponent implements OnInit {
-
+  selectedDog : Dog;
   dogs = new Array<Dog>();
   filterTerm : string;
   dateFormat = 'fullDate'
@@ -37,6 +37,10 @@ export class DogsComponent implements OnInit {
 
   toggleDate() {
     this.dateFormat == 'fullDate' ? this.dateFormat = 'shortDate' : this.dateFormat = 'fullDate';
+  }
+
+  selectDog(dog) {
+    this.selectedDog = dog;
   }
 
 }

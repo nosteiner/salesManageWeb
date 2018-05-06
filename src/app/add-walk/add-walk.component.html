@@ -1,0 +1,5 @@
+<h4>Adding a new walk for {{ dog.name }}</h4>
+<mat-form-field>
+  <textarea matInput [(ngModel)]="description" placeholder="Walk Description" />
+</mat-form-field>
+<button mat-button (click)="addWalk()" color="primary">Add Walk</button>
