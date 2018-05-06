@@ -1,5 +1,9 @@
 export default class Walk {
-    public type : string;
     public date : Date;
-    public comments : string;
+    public comment : string;
+
+    constructor(date: Date, comment: string) {
+        this.date = date;
+        this.comment = comment;
+    }
 }
