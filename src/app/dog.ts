@@ -6,6 +6,6 @@ export class Dog {
     public birthDate : Date;
     public weight : number;
     public owner : string;
-    public walks : Array<Walk>
+    public walks : Array<Walk> = new Array<Walk>();
     constructor() {}
 }
