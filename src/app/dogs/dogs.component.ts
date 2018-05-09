@@ -9,9 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './dogs.component.html',
   styleUrls: ['./dogs.component.scss']
 })
-export class DogsComponent implements OnInit, OnDestroy {
+export class DogsComponent implements OnInit {
 
-  intervalId: number;
   selectedDog : Dog;
   dogs = new Array<Dog>();
   filterTerm : string;
@@ -25,12 +24,8 @@ export class DogsComponent implements OnInit, OnDestroy {
     this.route.queryParams.subscribe(queryParams => {
       this.filterTerm = queryParams.name;
     });
-    this.intervalId = window.setInterval(() => console.log('Hello!'),  1000);
-  }
+    }
 
-  ngOnDestroy() {
-    window.clearInterval(this.intervalId);
-  }
 
   onFilterChanged(filterString) {
     this.router.navigate(['.'], { queryParams: { name: filterString }});
