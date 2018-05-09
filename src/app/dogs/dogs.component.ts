@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { DogsService } from '../dogs.service';
 import { Dog } from '../dog';
 import { ActivatedRoute, Router } from '@angular/router';
-
-
 
 @Component({
   selector: 'app-dogs',
   templateUrl: './dogs.component.html',
   styleUrls: ['./dogs.component.scss']
 })
-export class DogsComponent implements OnInit {
+export class DogsComponent implements OnInit, OnDestroy {
+
+  intervalId: number;
   selectedDog : Dog;
   dogs = new Array<Dog>();
   filterTerm : string;
@@ -25,6 +25,11 @@ export class DogsComponent implements OnInit {
     this.route.queryParams.subscribe(queryParams => {
       this.filterTerm = queryParams.name;
     });
+    this.intervalId = window.setInterval(() => console.log('Hello!'),  1000);
+  }
+
+  ngOnDestroy() {
+    window.clearInterval(this.intervalId);
   }
 
   onFilterChanged(filterString) {
