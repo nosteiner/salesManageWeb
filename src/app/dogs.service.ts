@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Dog } from './dog';
 import Walk from './walk';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 
 const DOGS =  [
   {id: 0, name: 'Rex', weight: 20, birthDate: new Date(2006, 2, 21), owner: 'Jack Daniels', walks: []},
@@ -14,8 +16,18 @@ const DOGS =  [
 export class DogsService {
 
   score : number = 0;
+  public scoreUpdated : Observable<number>;
+  public dogCountUpdated: Observable<number>;
+  private scoreSubject : Subject<number>;
+  private dogCountSubject: Subject<number>;
 
-  constructor() { }
+
+  constructor() {
+      this.scoreSubject = new Subject<number>();
+      this.dogCountSubject = new Subject<number>();
+      this.scoreUpdated = this.scoreSubject.asObservable();
+      this.dogCountUpdated = this.dogCountSubject.asObservable();
+   }
 
   getDogs() : Dog[] {
     return DOGS;
@@ -28,6 +40,7 @@ export class DogsService {
   addDog(dog : Dog) {
     dog.id = this.getDogs().length + 1;
     DOGS.push(dog);
+    this.dogCountSubject.next(DOGS.length);
   }
 
   updateDog(id: number, dog: Dog) {
@@ -35,12 +48,19 @@ export class DogsService {
     DOGS[existingDogIndex] = dog;
   }
 
+  removeDog(id) {
+    var existingDogIndex = this.getDogs().findIndex((dog) => dog.id == id);
+    DOGS.splice(existingDogIndex, 1);
+    this.dogCountSubject.next(DOGS.length);
+  }
+
   addWalk(dog : Dog, walk : Walk) {
     dog.walks.push(walk);
   }
 
   addScore(increment) {
-    this.score =+ increment;
+    this.score += increment;
+    this.scoreSubject.next(this.score);
   }
 
   getScore() {

@@ -20,7 +20,7 @@ import { EditDogComponent } from './edit-dog/edit-dog.component';
 import { FilterPipe } from './filter.pipe';
 import { AddWalkComponent } from './add-walk/add-walk.component';
 import { FilterComponent } from './filter/filter.component';
-import { ScoreComponentComponent } from './score-component/score-component.component';
+import { ScoreComponent } from './score/score.component';
 
 
 @NgModule({
@@ -33,7 +33,7 @@ import { ScoreComponentComponent } from './score-component/score-component.compo
     FilterPipe,
     AddWalkComponent,
     FilterComponent,
-    ScoreComponentComponent
+    ScoreComponent
     ],
   imports: [
     BrowserModule,

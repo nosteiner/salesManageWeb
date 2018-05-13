@@ -15,6 +15,7 @@ export class DogsComponent implements OnInit {
   dogs = new Array<Dog>();
   filterTerm : string;
   dateFormat = 'fullDate'
+  
 
   constructor(private dogsService : DogsService, private route : ActivatedRoute, private router : Router) {
     this.dogs = dogsService.getDogs();
@@ -31,8 +32,8 @@ export class DogsComponent implements OnInit {
     this.router.navigate(['.'], { queryParams: { name: filterString }});
   }
 
-  removeDog(index) {
-    this.dogs.splice(index, 1);
+  removeDog(id) {
+    this.dogsService.removeDog(id);
   }
 
   toggleDate() {
