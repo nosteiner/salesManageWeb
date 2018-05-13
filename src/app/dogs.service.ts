@@ -13,6 +13,8 @@ const DOGS =  [
 @Injectable()
 export class DogsService {
 
+  score : number = 0;
+
   constructor() { }
 
   getDogs() : Dog[] {
@@ -35,6 +37,14 @@ export class DogsService {
 
   addWalk(dog : Dog, walk : Walk) {
     dog.walks.push(walk);
+  }
+
+  addScore(increment) {
+    this.score =+ increment;
+  }
+
+  getScore() {
+    return this.score;
   }
 
 }
