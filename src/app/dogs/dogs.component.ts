@@ -34,6 +34,7 @@ export class DogsComponent implements OnInit {
 
   removeDog(id) {
     this.dogsService.removeDog(id);
+    this.dogsService.dogCountSubject.next();
   }
 
   toggleDate() {

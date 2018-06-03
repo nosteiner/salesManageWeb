@@ -18,9 +18,9 @@ export class DogsService {
   score : number = 0;
   public scoreUpdated : Observable<number>;
   public dogCountUpdated: Observable<number>;
+  public dogCountSubject: Subject<number>;
   private scoreSubject : Subject<number>;
-  private dogCountSubject: Subject<number>;
-
+  
 
   constructor() {
       this.scoreSubject = new Subject<number>();
@@ -40,7 +40,6 @@ export class DogsService {
   addDog(dog : Dog) {
     dog.id = this.getDogs().length + 1;
     DOGS.push(dog);
-    this.dogCountSubject.next(DOGS.length);
   }
 
   updateDog(id: number, dog: Dog) {
@@ -51,7 +50,6 @@ export class DogsService {
   removeDog(id) {
     var existingDogIndex = this.getDogs().findIndex((dog) => dog.id == id);
     DOGS.splice(existingDogIndex, 1);
-    this.dogCountSubject.next(DOGS.length);
   }
 
   addWalk(dog : Dog, walk : Walk) {

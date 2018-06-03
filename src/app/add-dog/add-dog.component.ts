@@ -29,6 +29,7 @@ export class AddDogComponent implements OnInit {
 
   submitDog() {
     this.dogsService.addDog(this.dog);
+    this.dogsService.dogCountSubject.next();
   }
 
 }

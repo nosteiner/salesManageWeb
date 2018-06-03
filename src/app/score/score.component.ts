@@ -20,8 +20,8 @@ export class ScoreComponent implements OnInit {
       this.score = newScore;
     });
 
-    this.dogsService.dogCountUpdated.subscribe((newCount) => {
-      this.dogsCount = newCount;
+    this.dogsService.dogCountUpdated.subscribe(() => {
+      this.dogsCount = this.dogsService.getDogs().length;
     })
   }
 
