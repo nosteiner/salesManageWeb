@@ -16,9 +16,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
+
 
 // Set our api routes
-app.use('/api', api);
+app.use('/', api);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
@@ -28,6 +30,11 @@ app.get('*', (req, res) => {
 /**
  * Get port from environment and store in Express.
  */
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
+
 const port = process.env.PORT || '3000';
 app.set('port', port);
 
