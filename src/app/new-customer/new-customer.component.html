@@ -1,0 +1,22 @@
+<div class="content-container">
+  <div class="form">
+    <h3>Create New Customer</h3>
+    <mat-form-field>
+      <input matInput [(ngModel)]="customer.first_name" placeholder="First Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="customer.last_name" placeholder="Last Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="customer.company_name" placeholder="Company Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="customer.email" placeholder="email">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="customer.phone" placeholder="Phone">
+    </mat-form-field>
+    <button mat-button (click)="submitCustomer()" color="primary" >Submit</button>
+  </div>
+
+</div>

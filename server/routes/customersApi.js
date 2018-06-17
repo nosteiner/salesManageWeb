@@ -13,12 +13,22 @@ router.get('/', (req, res) => {
     });
 });
 
+
+router.get('/:id', (req, res) => {
+    var customer = customerDA.getOneById(req.params.id).then((data)=>{
+        console.log(JSON.stringify(data))
+        res.send(JSON.stringify(data));
+    }).catch((error) => {
+        res.send("error:" + error)
+    });
+  });
+
 // save new customer 
-router.post('/newCustomer', (req, res) => {
-    newCustomer = req.body
+router.post('/', (req, res) => {
+    newCustomer = req.body.customer
     console.log(newCustomer)
-    customerDA.createNew(newCustomer).then(data => {
-        res.send("saved");
+    customerDA.createNew(newCustomer).then(()=> {
+        res.send(JSON.stringify(newCustomer));
     }).catch((error) => {
         res.send("error:" + error)
     });
@@ -36,11 +46,8 @@ router.put('/editCustomer/:id', (req, res) => {
 
 //delete customer by id 
 router.delete('/deleteCustomer/:id', (req, res) => {
-    customerDA.remove(req.params.id).then(() => {
-        res.send("row id:" + req.params.id + " removed from db");
-    }).catch((error) => {
-        res.send("error:" + error)
-    });
+    customerDA.remove(req.params.id)
+    res.status(200).send({});
 });
 
 module.exports = router
